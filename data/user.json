@@ -1,0 +1,19 @@
+[{
+    "username": "tay_swift",
+    "name": "Taylor Swift",
+    "email": "taylor.swift@gmail.com",
+    "dob": "07-11-2001",
+    "bloodGroup": "A+",
+    "gender": "Female",
+    "religion": "Buddhist",
+    "status": "Single",
+    "address": {
+      "street": "Orchard Road",
+      "city": "Singapore",
+      "state": "Singapore",
+      "postalCode": "238823"
+    },
+    "phone": "94558666",
+    "emergency": "83739494",
+    "profile": "https://storage.cloud.google.com/healthconnect_fyp/tay.jpg"
+  }]
