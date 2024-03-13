@@ -7,6 +7,13 @@ const port = process.env.PORT || 5000;
 const crypto = require("crypto");
 const client = require("./client/mongo");
 const userController = require("./controllers/user_controllers");
+const appointmentController = require("./controllers/appointment_controllers");
+const billsController = require("./controllers/bills_controllers");
+const caloriesIntakeController = require("./controllers/caloriesIntake_controllers");
+const healthDataController = require("./controllers/healthData_controllers");
+const immunisationController = require("./controllers/immunisation_controllers");
+const reportsController = require("./controllers/reports_controllers");
+const medicatoinController = require("./controllers/medication_controllers");
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -20,6 +27,13 @@ async function run() {
     await client.connect();
 
     app.use("/", userController);
+    app.use("/", appointmentController);
+    app.use("/", billsController);
+    app.use("/", caloriesIntakeController);
+    app.use("/", healthDataController);
+    app.use("/", immunisationController);
+    app.use("/", reportsController);
+    app.use("/", medicatoinController);
 
     // Generate random secret key
     const generateSecretKey = () => {

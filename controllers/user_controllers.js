@@ -55,7 +55,8 @@ router.post("/signup", async (req, res) => {
             phone,
             emergency,
             profile,
-            password: hashedPassword
+            password: hashedPassword,
+            calories: 0
         };
         const data = await userCollection.insertOne(newUser);
         // console.log(newUser)
@@ -140,5 +141,32 @@ router.get("/user/:email", async (req, res) => {
     }
 });
 
+router.put("/user/calories/:email", async (req, res) => {
+    try {
+        const email = req.params.email;
+        const { calories } = req.body;
+        console.log(email,calories)
+
+        // Check if calories value is provided
+        if (!calories) {
+            return res.status(400).json({ error: "Calories value is required." });
+        }
+
+        // Update the user's calories field
+        const updatedUser = await userCollection.findOneAndUpdate(
+            { email },
+            { $set: { calories } },
+            { returnOriginal: false }
+        );
+
+        if (!updatedUser.value) {
+            return res.status(404).json({ error: "User not found." });
+        }
+
+        res.status(200).json({ message: "Calories updated successfully", user: updatedUser.value });
+    } catch (error) {
+        res.status(500).json({ error: "Internal server error." });
+    }
+});
 
 module.exports = router;

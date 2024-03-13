@@ -1,4 +1,5 @@
-[{
+[
+  {
     "username": "tay_swift",
     "name": "Taylor Swift",
     "email": "taylor.swift@gmail.com",
@@ -16,4 +17,5 @@
     "phone": "94558666",
     "emergency": "83739494",
     "profile": "https://storage.cloud.google.com/healthconnect_fyp/tay.jpg"
-  }]
+  }
+]
