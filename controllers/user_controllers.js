@@ -141,7 +141,7 @@ router.get("/user/:email", async (req, res) => {
     }
 });
 
-router.put("/user/calories/:email", async (req, res) => {
+router.post("/user/calories/:email", async (req, res) => {
     try {
         const email = req.params.email;
         const { calories } = req.body;
@@ -156,7 +156,6 @@ router.put("/user/calories/:email", async (req, res) => {
         const updatedUser = await userCollection.findOneAndUpdate(
             { email },
             { $set: { calories } },
-            { returnOriginal: false }
         );
 
         if (!updatedUser.value) {
