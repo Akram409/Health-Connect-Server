@@ -85,14 +85,14 @@ router.post("/login", async (req, res) => {
         // Search by email only:
         const user = await userCollection.findOne({ email });
 
-        console.log(user);
+        // console.log(user);
         // Handle cases where no user is found or password is incorrect:
         if (!user || !(await bcrypt.compare(password, user.password))) {
             res.status(401).json({ error: "Invalid email or password." });
             return; // Prevent duplicate error message in case both conditions are met
         }
 
-        console.log(user);
+        // console.log(user);
 
         const token = jwt.sign(
             { id: user._id, email },
@@ -100,7 +100,7 @@ router.post("/login", async (req, res) => {
             { expiresIn: "7d" }
         );
 
-        console.log(token);
+        // console.log(token);
 
         res.json({ auth: true, token, email: user.email });
 
@@ -111,7 +111,7 @@ router.post("/login", async (req, res) => {
 
 router.post("/user", async (req, res) => {
     const user = req.body;
-    console.log(user);
+    // console.log(user);
     const query = { email: user.email };
     const existingUser = await userCollection.findOne(query);
 
@@ -155,7 +155,7 @@ router.post("/user/calories/:email", async (req, res) => {
         // Update the user's calories field
         const updatedUser = await userCollection.findOneAndUpdate(
             { email },
-            { $set: { calories } },
+            { $inc: { calories: calories } },
         );
 
         if (!updatedUser.value) {

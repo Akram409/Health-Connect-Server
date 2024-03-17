@@ -14,6 +14,7 @@ const healthDataController = require("./controllers/healthData_controllers");
 const immunisationController = require("./controllers/immunisation_controllers");
 const reportsController = require("./controllers/reports_controllers");
 const medicatoinController = require("./controllers/medication_controllers");
+const caloriesController = require("./controllers/calories_controller");
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -34,6 +35,7 @@ async function run() {
     app.use("/", immunisationController);
     app.use("/", reportsController);
     app.use("/", medicatoinController);
+    app.use("/", caloriesController);
 
     // Generate random secret key
     const generateSecretKey = () => {
