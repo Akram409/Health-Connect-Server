@@ -27,7 +27,7 @@ router.post("/user/caloriesData/:email", async (req, res) => {
 
 router.post("/calories/:email", async (req, res) => {
   const { email } = req.params;
-  const { date, calories } = req.body;
+  const { date, calories, foodName } = req.body;
 
   try {
     let existingData = await caloriesCollection.findOne({
@@ -38,11 +38,19 @@ router.post("/calories/:email", async (req, res) => {
     if (existingData) {
       await caloriesCollection.updateOne(
         { user_email: email, date },
-        { $set: { calories: existingData.calories + calories } }
+        {
+          $set: { calories: +(existingData.calories + calories).toFixed(3) },
+          $push: { food: { name: foodName, calories: +(calories).toFixed(3) } }
+        }
       );
     } else {
       // If no data exists, insert a new document
-      await caloriesCollection.insertOne({ user_email: email, date, calories });
+      await caloriesCollection.insertOne({
+        user_email: email,
+        date,
+        calories: +(calories).toFixed(3),
+        food: [{ name: foodName, calories: +(calories).toFixed(3) }] // Add the new food item
+      });
     }
 
     res.status(200).json({ message: "Calories updated successfully." });
@@ -52,33 +60,48 @@ router.post("/calories/:email", async (req, res) => {
   }
 });
 
+// router.post("/calories/add/food/:email", async (req, res) => {
+//   const { email } = req.params;
+//   const { date, food } = req.body;
+
+// });
 router.put("/calories/remove/:email", async (req, res) => {
   const { email } = req.params;
-  const { date, calories } = req.body;
+  const { date, calories, foodName } = req.body;
 
   try {
+    // Find the document matching the user's email and date
     let existingData = await caloriesCollection.findOne({
       user_email: email,
       date,
     });
 
     if (existingData) {
-      if (existingData.calories >= calories) {
-        // Subtract provided calories from the existing calories
+      // Find the index of the food item by its name and calories
+      const indexToRemove = existingData.food.findIndex(
+        (food) => food.name === foodName && food.calories === calories
+      );
+
+      if (indexToRemove !== -1) {
+        // Remove the food item from the 'food' array
+        existingData.food.splice(indexToRemove, 1);
+
+        // Calculate the new total calories after removing the food item
         const updatedCalories = existingData.calories - calories;
-        
-        // Update the document with the new calories value
+
+        // Update the document with the modified food array and calories
         await caloriesCollection.updateOne(
           { user_email: email, date },
-          { $set: { calories: updatedCalories } }
+          { $set: { food: existingData.food, calories: updatedCalories } }
         );
 
         res.status(200).json({ message: "Calories removed successfully." });
       } else {
-        res.status(400).json({ error: "Insufficient calories to subtract." });
+        // If the food item was not found in the 'food' array
+        res.status(404).json({ error: "Food item not found." });
       }
     } else {
-      // If no data exists for the specified email and date, return a message
+      // If no data exists for the specified email and date
       res.status(404).json({ error: "No data found for the specified email and date." });
     }
   } catch (error) {
@@ -86,6 +109,15 @@ router.put("/calories/remove/:email", async (req, res) => {
     res.status(500).json({ error: "Internal server error." });
   }
 });
+
+router.get('/calorisData',async(req,res)=>{
+  try {
+    const data = await caloriesCollection.find().toArray();
+    res.json(data);
+} catch (error) {
+    res.status(500).json({ error: "Internal server error." });
+}
+})
 
 
 
