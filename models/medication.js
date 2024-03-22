@@ -1,4 +1,4 @@
 const client = require("../client/mongo");
 
-const medicationCollection = client.db("utility").collection("medication");
+const medicationCollection = client.db("healthconnect").collection("medication");
 module.exports = medicationCollection;

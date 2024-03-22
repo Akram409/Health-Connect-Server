@@ -1,4 +1,4 @@
 const client = require("../client/mongo");
 
-const caloriesCollection = client.db("utility").collection("calories");
+const caloriesCollection = client.db("healthconnect").collection("calories");
 module.exports = caloriesCollection;
