@@ -26,6 +26,14 @@ const healthDataSchema = mongoose.Schema({
   oxygenLevel: {
     type: Number,
     required: true
+  },
+  height: {
+    type: Number,
+    required: true
+  },
+  weight: {
+    type: Number,
+    required: true
   }
 });
 
