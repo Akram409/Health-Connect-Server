@@ -27,8 +27,8 @@ router.post("/user/caloriesData/:email", async (req, res) => {
 
 router.post("/calories/:email", async (req, res) => {
   const { email } = req.params;
-  const { date, calories, foodName } = req.body;
-
+  const { date, calories, foodName, category } = req.body;
+  console.log(req.body);
   try {
     let existingData = await caloriesCollection.findOne({
       user_email: email,
@@ -40,7 +40,9 @@ router.post("/calories/:email", async (req, res) => {
         { user_email: email, date },
         {
           $set: { calories: +(existingData.calories + calories).toFixed(3) },
-          $push: { food: { name: foodName, calories: +(calories).toFixed(3) } }
+          $push: {
+            food: { name: foodName, calories: +calories.toFixed(3), category },
+          },
         }
       );
     } else {
@@ -48,8 +50,8 @@ router.post("/calories/:email", async (req, res) => {
       await caloriesCollection.insertOne({
         user_email: email,
         date,
-        calories: +(calories).toFixed(3),
-        food: [{ name: foodName, calories: +(calories).toFixed(3) }] // Add the new food item
+        calories: +calories.toFixed(3),
+        food: [{ name: foodName, calories: +calories.toFixed(3), category }], // Include category here
       });
     }
 
@@ -67,7 +69,7 @@ router.post("/calories/:email", async (req, res) => {
 // });
 router.put("/calories/remove/:email", async (req, res) => {
   const { email } = req.params;
-  const { date, calories, foodName } = req.body;
+  const { date, calories, foodName, category } = req.body;
 
   try {
     // Find the document matching the user's email and date
@@ -79,7 +81,10 @@ router.put("/calories/remove/:email", async (req, res) => {
     if (existingData) {
       // Find the index of the food item by its name and calories
       const indexToRemove = existingData.food.findIndex(
-        (food) => food.name === foodName && food.calories === calories
+        (food) =>
+          food.name === foodName &&
+          food.calories === calories &&
+          food.category === category
       );
 
       if (indexToRemove !== -1) {
@@ -102,7 +107,9 @@ router.put("/calories/remove/:email", async (req, res) => {
       }
     } else {
       // If no data exists for the specified email and date
-      res.status(404).json({ error: "No data found for the specified email and date." });
+      res
+        .status(404)
+        .json({ error: "No data found for the specified email and date." });
     }
   } catch (error) {
     console.error("Error removing calories:", error);
@@ -110,15 +117,13 @@ router.put("/calories/remove/:email", async (req, res) => {
   }
 });
 
-router.get('/calorisData',async(req,res)=>{
+router.get("/calorisData", async (req, res) => {
   try {
     const data = await caloriesCollection.find().toArray();
     res.json(data);
-} catch (error) {
+  } catch (error) {
     res.status(500).json({ error: "Internal server error." });
-}
-})
-
-
+  }
+});
 
 module.exports = router;

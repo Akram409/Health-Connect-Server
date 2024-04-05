@@ -1,37 +1,167 @@
 [
-  [
-    {
-      "_id": "65f990dd7c0bce0fd46ee7d2",
-      "date": "2024-03-19",
-      "user_email": "example@example.com",
-      "calories": 1500,
-      "food": [
-        { "name": "Chicken Breast", "calories": 230 },
-        { "name": "Brown Rice", "calories": 112 },
-        { "name": "Broccoli", "calories": 55 }
-      ]
-    },
-    {
-      "_id": "65f996c0f6242d12efcae371",
-      "user_email": "test@gmail.com",
-      "date": "2024-03-19T13:44:26.215Z",
-      "calories": 686.15,
-      "food": [
-        { "name": "Chicken Breast", "calories": 165 },
-        { "name": "Mee Siam", "calories": 521.15 }
-      ]
-    },
-    {
-      "_id": "65f9977d7074a44d916c3f3c",
-      "user_email": "test@gmail.com",
-      "date": "2024-03-18T13:44:26.215Z",
-      "calories": 1782.65,
-      "food": [
-        { "name": "Mee Siam", "calories": 521.15 },
-        { "name": "Loh Mai Fan", "calories": 422 },
-        { "name": "Fish Ball Mee Pok, dry", "calories": 481.5 },
-        { "name": "Bubur Cha Cha", "calories": 358 }
-      ]
-    }
-  ]
+  {
+    "user_email": "test@gmail.com",
+    "date": "19/03/2024",
+    "calories": 2172,
+    "food": [
+      { "name": "Bubur Cha Cha", "calories": 358, "category": "morning" },
+      { "name": "Loh Mai Fan", "calories": 422, "category": "morning" },
+      { "name": "Curry Fish Head", "calories": 1392, "category": "night" }
+    ]
+  },
+  {
+    "user_email": "test@gmail.com",
+    "date": "21/03/2024",
+    "calories": 247.25,
+    "food": [
+      { "name": "Kopi", "calories": 134.75, "category": "morning" },
+      { "name": "Teh O", "calories": 112.5, "category": "morning" }
+    ]
+  },
+  {
+    "user_email": "test@gmail.com",
+    "date": "18/03/2024",
+    "calories": 0,
+    "food": []
+  },
+  {
+    "user_email": "test@gmail.com",
+    "date": "17/03/2024",
+    "calories": 358,
+    "food": [
+      { "name": "Bubur Cha Cha", "calories": 358, "category": "morning" },
+      { "name": "Mee Siam", "calories": 521.15, "category": "morning" }
+    ]
+  },
+  {
+    "user_email": "tay_swift@gmail.com",
+    "date": "19/03/2024",
+    "calories": 348,
+    "food": [{ "name": "Bak Kut Teh", "calories": 348, "category": "night" }]
+  },
+  {
+    "user_email": "test@gmail.com",
+    "date": "20/03/2024",
+    "calories": 134.75,
+    "food": [{ "name": "Kopi", "calories": 134.75, "category": "morning" }]
+  },
+  {
+    "user_email": "tay_swift@gmail.com",
+    "date": "21/03/2024",
+    "calories": 756.42,
+    "food": [
+      { "name": "Economic Fried Bee Hoon", "calories": 250, "category": "morning" },
+      { "name": "Kaya Toast", "calories": 318, "category": "morning" },
+      { "name": "Kaya Toast", "calories": 318, "category": "morning" }
+    ]
+  },
+  {
+    "user_email": "test@gmail.com",
+    "date": "18/03/2024",
+    "calories": 422,
+    "food": [{ "name": "Loh Mai Fan", "calories": 422, "category": "morning" }]
+  },
+  {
+    "user_email": "tay_swift@gmail.com",
+    "date": "20/03/2024",
+    "calories": 604.2,
+    "food": [
+      { "name": "Xiao Long Bao", "calories": 46.5, "category": "morning" },
+      { "name": "Chicken Rice, with steamed chicken", "calories": 557.7, "category": "morning" }
+    ]
+  },
+  {
+    "user_email": "test@gmail.com",
+    "date": "22/03/2024",
+    "calories": 793.9,
+    "food": [
+      { "name": "Chicken Rice, with steamed chicken", "calories": 557.7, "category": "morning" },
+      { "name": "Green Bean Soup", "calories": 236.2, "category": "night" }
+    ]
+  },
+  {
+    "user_email": "tay_swift@gmail.com",
+    "date": "22/03/2024",
+    "calories": 348,
+    "food": [{ "name": "Bak Kut Teh", "calories": 348, "category": "night" }]
+  },
+  {
+    "user_email": "tay_swift@gmail.com",
+    "date": "23/03/2024",
+    "calories": 153.4,
+    "food": [{ "name": "Teh", "calories": 153.4, "category": "morning" }]
+  },
+  {
+    "user_email": "tay_swift@gmail.com",
+    "date": "27/03/2024",
+    "calories": 321.2,
+    "food": [
+      { "name": "Green Bean Soup", "calories": 236.2, "category": "night" },
+      { "name": "Kopi O", "calories": 85, "category": "morning" }
+    ]
+  },
+  {
+    "user_email": "tay_swift@gmail.com",
+    "date": "28/03/2024",
+    "calories": 936.76,
+    "food": [
+      { "name": "Tomato and Egg Soup", "calories": 147.19, "category": "night" },
+      { "name": "Tomato and Egg Soup", "calories": 147.19, "category": "night" },
+      { "name": "Tomato and Egg Soup", "calories": 147.19, "category": "night" },
+      { "name": "Tomato and Egg Soup", "calories": 147.19, "category": "night" },
+      { "name": "Bak Kut Teh", "calories": 348, "category": "night" }
+    ]
+  },
+  {
+    "user_email": "tay_swift@gmail.com",
+    "date": "26/03/2024",
+    "calories": 147.19,
+    "food": [{ "name": "Tomato and Egg Soup", "calories": 147.19, "category": "night" }]
+  },
+  {
+    "user_email": "undefined",
+    "date": "03/04/2024",
+    "calories": 285.24,
+    "food": [{ "name": "Seafood Tom Yam Soup", "calories": 285.24, "category": "night" }]
+  },
+  {
+    "user_email": "akramjas01834129212@gmail.com",
+    "date": "03/04/2024",
+    "calories": 2310.54,
+    "food": [
+      { "name": "Seafood Tom Yam Soup", "calories": 285.24, "category": "night" },
+      { "name": "Teh O", "calories": 112.5, "category": "morning" },
+      { "name": "Mee Siam", "calories": 521.15, "category": "morning" },
+      { "name": "Mee Siam", "calories": 521.15, "category": "morning" },
+      { "name": "Kopi C", "calories": 87.3, "category": "morning" },
+      { "name": "Kaya Toast", "calories": 318, "category": "morning" },
+      { "name": "Teh Tarik", "calories": 229, "category": "morning" },
+      { "name": "Green Bean Soup", "calories": 236.2, "category": "night" }
+    ]
+  },
+  {
+    "user_email": "tay_swift@gmail.com",
+    "date": "05/04/2024",
+    "calories": 2856.4,
+    "food": [
+      { "name": "Bak Kut Teh", "calories": 348, "category": "night" },
+      { "name": "Milo Drink", "calories": 120.18, "category": "morning" },
+      { "name": "Fish Ball Mee Pok, dry", "calories": 481.5, "category": "morning" },
+      { "name": "Bubur Cha Cha", "calories": 358, "category": "morning" },
+      { "name": "Seafood Tom Yam Soup", "calories": 285.24, "category": "night" },
+      { "name": "Lotus Root Soup with Pork Ribs", "calories": 129.58, "category": "night" },
+      { "name": "Kopi O", "calories": 85, "category": "morning" },
+      { "name": "Kopi O", "calories": 85, "category": "morning" },
+      { "name": "Kopi O", "calories": 85, "category": "morning" },
+      { "name": "Kopi O", "calories": 85, "category": "morning" },
+      { "name": "Green Bean Soup", "calories": 236.2, "category": "night" },
+      { "name": "Chicken Rice, with steamed chicken", "calories": 557.7, "category": "morning" }
+    ]
+  },
+  {
+    "user_email": "akramjas01834129212@gmail.com",
+    "date": "05/04/2024",
+    "calories": 285.24,
+    "food": [{ "name": "Seafood Tom Yam Soup", "calories": 285.24, "category": "night" }]
+  }
 ]

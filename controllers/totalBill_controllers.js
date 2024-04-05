@@ -19,7 +19,7 @@ router.put("/totalBill/:email", async (req, res) => {
   try {
     const result = await totalBillCollection.updateOne(
       { email },
-      { $inc: { totalBill: totalAmount } }
+      { $inc: { totalBill: -totalAmount } } // Decrement the totalBill by totalAmount
     );
 
     if (result.modifiedCount === 0) {
@@ -31,5 +31,6 @@ router.put("/totalBill/:email", async (req, res) => {
     res.status(500).json({ error: "Internal server error." });
   }
 });
+
 
 module.exports = router;
